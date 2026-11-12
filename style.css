@@ -652,7 +652,78 @@ body {
 /* ==========================================================
    CURRENT LEADERBOARD SECTION STYLES
    ========================================================== */
-.leaderboard-section {
+/* ==========================================================
+   SERIES BUTTONS & TEAM LOGO CONTAINERS (ANTI-OVERFLOW)
+   ========================================================== */
+
+/* Series Button Logo Badge */
+.series-logo-frame {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-glass);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Prevents oversized images from spilling out */
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+.series-logo-img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Keeps image proportion intact without stretching */
+  display: block;
+}
+
+/* Constructor Team Row Logo Badge */
+.team-logo-frame {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  max-width: 28px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Locks image strictly inside the 28x28 box */
+  padding: 3px;
+  flex-shrink: 0;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.leaderboard-table tr:hover .team-logo-frame {
+  border-color: var(--race-green);
+  transform: scale(1.08);
+}
+
+.team-logo-img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Maintains correct aspect ratio */
+  display: block;
+}
+
+/* Ensure team cell layout accommodates color indicator + logo + name */
+.team-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 600;
+  color: #fff;
+  min-width: 240px;
+}
+
+   .leaderboard-section {
   position: relative;
   padding: 5rem 0 6rem;
   background-color: var(--race-black);
