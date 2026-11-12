@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Racify | Power • Performance • Speed</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Orbitron:wght@600;800;900&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons Library -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- CONNECTING STYLESHEET -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Ambient Race Stage Lighting -->
+  <div class="ambient-glow top-center"></div>
+  <div class="ambient-glow mid-left"></div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="navbar">
+    <div class="nav-container">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo">
+        <div class="logo-box">
+          <i data-lucide="gauge"></i>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">RACI<span class="text-green">FY</span></span>
+          <span class="logo-sub">Motorsport Hub</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="nav-links" id="nav-links">
+        <a href="#events" class="nav-link active">
+          <span class="live-dot"></span> Live Events
+        </a>
+        <a href="#series" class="nav-link">Series Hub</a>
+        <a href="#telemetry" class="nav-link">Telemetry</a>
+        <a href="#community" class="nav-link">Paddock Club</a>
+        <a href="#news" class="nav-link">News</a>
+      </nav>
+
+      <!-- Nav Actions & Mobile Toggle -->
+      <div class="nav-actions">
+        <div class="live-pill-badge">
+          <span class="pulse-indicator"></span>
+          <span>IMSA Daytona 24h: <strong>Lap 412/700</strong></span>
+        </div>
+        
+        <a href="#race-center" class="btn btn-primary slant-pill">
+          <span>Race Center</span>
+          <i data-lucide="chevron-right"></i>
+        </a>
+
+        <button class="mobile-toggle-btn" id="mobile-toggle" aria-label="Toggle navigation">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main>
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero-section racing-pattern" id="hero">
+      <div class="section-container">
+        
+        <!-- Top Status Ribbon & Counters -->
+        <div class="hero-ribbon">
+          <div class="platform-tag">
+            <i data-lucide="zap"></i>
+            <span>Official Motorsport Data Platform</span>
+          </div>
+
+          <!-- Counter Stats -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">120<span class="text-green">+</span></span>
+              <span class="stat-label">Active Circuits</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">50<span class="text-green">+</span></span>
+              <span class="stat-label">Global Series</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">1.2M<span class="text-green">+</span></span>
+              <span class="stat-label">Enthusiasts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Headline -->
+        <div class="hero-headline-block">
+          <h2 class="sub-headline">POWER • PERFORMANCE • SPEED</h2>
+          <h1 class="main-headline">
+            DEFINED BY <span class="text-green green-glow-text">VICTORY.</span>
+          </h1>
+          <p class="hero-description">
+            Real-time circuit telemetry, synchronized global race calendars, and inside pitwall intelligence. Your high-speed paddock passes in one seamless terminal.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="hero-buttons">
+            <a href="#calendar" class="btn btn-primary slant-pill btn-lg">
+              Explore 2026 Calendar
+            </a>
+            <a href="#telemetry" class="btn btn-outline slant-pill btn-lg">
+              <i data-lucide="play" class="fill-current"></i>
+              <span>Live Telemetry Demo</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ================= HERO STAGE & 3D CAR ================= -->
+        <div class="hero-stage" id="hero-stage">
+          <div class="car-underglow"></div>
+
+          <!-- Car Wrapper (Tilts on mouse movement) -->
+          <div class="car-wrapper" id="car-wrapper">
+            <!-- Swap this src with your own image asset anytime -->
+            <img 
+              id="hero-car-image"
+              src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1400&q=80" 
+              alt="GT Endurance Race Car" 
+              class="hero-car-img" 
+            />
+
+            <!-- Interactive Floating Pin Badge -->
+            <div class="car-hud-pin">
+              <span class="pulse-indicator"></span>
+              <span>AERO DOWNFORCE: 1,420 KG</span>
+            </div>
+          </div>
+
+          <!-- ================= 3 FLOATING ADVANTAGE CARDS ================= -->
+
+          <!-- Advantage Card 1: Top Left -->
+          <div class="hud-card card-left float-slow">
+            <div class="hud-card-header">
+              <div class="hud-icon-box">
+                <i data-lucide="activity"></i>
+              </div>
+              <span class="hud-tag">0.02s Latency</span>
+            </div>
+            <h3 class="hud-card-title">Live Telemetry HUD</h3>
+            <p class="hud-card-desc">
+              Millisecond sector deltas, tire degradation vectors, and direct pit-radio feeds synced across all devices.
+            </p>
+            <div class="hud-card-footer">
+              <span class="text-muted">Sector 1 Velocity</span>
+              <span class="footer-highlight">318.4 KM/H</span>
+            </div>
+          </div>
+
+          <!-- Advantage Card 2: Top Right -->
+          <div class="hud-card card-right float-delayed">
+            <div class="hud-card-header">
+              <div class="hud-icon-box">
+                <i data-lucide="calendar-check"></i>
+              </div>
+              <span class="hud-tag">Auto-Timezone</span>
+            </div>
+            <h3 class="hud-card-title">Unified Calendar</h3>
+            <p class="hud-card-desc">
+              Never miss a green flag. F1, WEC, IMSA, 24H Series, and Super GT synchronized with one-click ICS export.
+            </p>
+            <div class="hud-card-footer">
+              <span class="text-muted">Next Green Flag:</span>
+              <span class="text-green font-tech">2h : 14m : 08s</span>
+            </div>
+          </div>
+
+          <!-- Advantage Card 3: Bottom Left -->
+          <div class="hud-card card-bottom float-rev">
+            <div class="hud-card-header">
+              <div class="hud-icon-box">
+                <i data-lucide="shield-check"></i>
+              </div>
+              <span class="text-muted uppercase text-xs font-tech">Paddock Club</span>
+            </div>
+            <h3 class="hud-card-title">Driver & Sim Insights</h3>
+            <p class="hud-card-desc">
+              Exclusive race engineering debriefs, setups analysis, track-walk diagrams, and verified community forums.
+            </p>
+          </div>
+
+        </div>
+        <!-- End of Hero Stage -->
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         FUTURE SECTIONS CAN BE PASTED BELOW HERE:
+         - SECTION 2: Event Dashboard (Filters, Track Layouts)
+         - SECTION 3: World Series Hub (3D Globe / Map)
+         - SECTION 4: Latest News & Community Forum Grid
+         - SECTION 5: Sponsors & Footer
+         ======================================================== -->
+
+  </main>
+
+  <!-- CONNECTING JAVASCRIPT -->
+  <script src="script.js"></script>
+</body>
+</html>
