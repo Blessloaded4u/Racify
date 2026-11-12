@@ -201,6 +201,63 @@
       </div>
     </section>
 
+    <!-- ==================== CURRENT LEADERBOARD SECTION ==================== -->
+    <section class="leaderboard-section" id="leaderboard">
+      <div class="section-container">
+        
+        <!-- Header & Subheader -->
+        <div class="leaderboard-header">
+          <div class="leaderboard-tag">
+            <span class="live-dot"></span>
+            <span>2026 World Championship</span>
+          </div>
+          <h2 class="leaderboard-title">CURRENT LEADERBOARD</h2>
+          <p class="leaderboard-subtitle">Official Constructors & Team Standings across global race events</p>
+        </div>
+
+        <!-- Series Selector Buttons -->
+        <div class="series-nav" id="series-nav">
+          <button class="series-btn active" data-series="f1">
+            <i data-lucide="flag"></i>
+            <span>Formula 1</span>
+          </button>
+          <button class="series-btn" data-series="wec">
+            <i data-lucide="shield"></i>
+            <span>FIA WEC</span>
+          </button>
+          <button class="series-btn" data-series="gt3">
+            <i data-lucide="zap"></i>
+            <span>GT World Challenge</span>
+          </button>
+          <button class="series-btn" data-series="wrc">
+            <i data-lucide="compass"></i>
+            <span>WRC Rally</span>
+          </button>
+        </div>
+
+        <!-- Table Container with Mobile-Friendly Horizontal Scroll -->
+        <div class="table-wrapper">
+          <div class="table-scroll-hint">
+            <i data-lucide="arrow-left-right"></i>
+            <span>Swipe horizontally to view all 10 race events</span>
+          </div>
+
+          <div class="table-responsive">
+            <table class="leaderboard-table" id="leaderboard-table">
+              <thead>
+                <tr id="table-head-row">
+                  <!-- Injected via JavaScript based on chosen series -->
+                </tr>
+              </thead>
+              <tbody id="table-body">
+                <!-- Injected via JavaScript based on chosen series -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
     <!-- ========================================================
          FUTURE SECTIONS CAN BE PASTED BELOW HERE:
          - SECTION 2: Event Dashboard (Filters, Track Layouts)
