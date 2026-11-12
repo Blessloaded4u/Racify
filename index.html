@@ -274,6 +274,66 @@
 
       </div>
     </section>
+
+    <!-- ==================== SECTION 3: RACE EVENTS & SCHEDULE ==================== -->
+    <section class="racing-events-section" id="events-schedule">
+      <div class="section-container">
+        
+        <!-- Header & Subheading -->
+        <div class="events-header">
+          <div class="events-tag">
+            <span class="pulse-indicator"></span>
+            <span>Worldwide Racing Calendar</span>
+          </div>
+          <h2 class="events-title">CHAMPIONSHIP EVENTS</h2>
+          <p class="events-subtitle">Real-time status, circuit distances, countdown clocks, and telemetry insights</p>
+        </div>
+
+        <!-- Filter Bar & "See More" Toolbar -->
+        <div class="events-toolbar">
+          <div class="events-filter-group" id="events-filter-bar">
+            <button class="events-filter-btn active" data-series="all">
+              <span>ALL SERIES</span>
+            </button>
+            <button class="events-filter-btn" data-series="f1">
+              <span>Formula 1</span>
+            </button>
+            <button class="events-filter-btn" data-series="wec">
+              <span>FIA WEC</span>
+            </button>
+            <button class="events-filter-btn" data-series="gt3">
+              <span>GT World</span>
+            </button>
+            <button class="events-filter-btn" data-series="wrc">
+              <span>WRC Rally</span>
+            </button>
+          </div>
+
+          <!-- Counter & Quick See More Action -->
+          <div class="events-toolbar-actions">
+            <span class="events-count-pill" id="events-count-display">Showing 0 Events</span>
+            <button class="btn btn-outline slant-pill btn-sm" id="quick-see-more-btn">
+              <span>See More</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Card Grid -->
+        <div class="events-grid-container" id="events-grid-container">
+          <!-- Cards injected dynamically via script.js -->
+        </div>
+
+        <!-- Bottom See More Link / Button -->
+        <div class="see-more-wrapper" id="see-more-wrapper">
+          <button class="btn btn-primary slant-pill btn-lg" id="load-more-btn">
+            <span>Load More Events</span>
+            <i data-lucide="plus-circle"></i>
+          </button>
+        </div>
+
+      </div>
+    </section>
     <!-- ========================================================
          FUTURE SECTIONS CAN BE PASTED BELOW HERE:
          - SECTION 2: Event Dashboard (Filters, Track Layouts)
