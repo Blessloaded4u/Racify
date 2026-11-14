@@ -435,6 +435,73 @@
 
       </div>
     </div>
+
+    <!-- ==================== SECTION 5: CAR SHOWCASE / GARAGE ==================== -->
+    <section class="cars-showcase-section" id="garage">
+      <div class="section-container">
+        
+        <!-- Header & Subtitle -->
+        <div class="cars-header">
+          <div class="cars-tag">
+            <span class="live-dot"></span>
+            <span>Technical Specifications</span>
+          </div>
+          <h2 class="cars-title">THE MACHINES</h2>
+          <p class="cars-subtitle">Chassis architecture, aerodynamic configurations, and powertrain outputs</p>
+        </div>
+
+        <!-- Series Selector (F1 is Default, No "ALL" button) -->
+        <div class="cars-toolbar">
+          <div class="cars-series-nav" id="cars-series-nav">
+            <button class="car-nav-btn active" data-series="f1">
+              <span class="series-logo-frame">
+                <img src="https://media.formula1.com/image/upload/f_auto,c_limit,w_195,q_auto/etc/designs/fom-website/images/f1_default_logo.png" alt="F1" class="series-logo-img" />
+              </span>
+              <span>Formula 1</span>
+            </button>
+
+            <button class="car-nav-btn" data-series="wec">
+              <span class="series-logo-frame">
+                <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/WEC_logo.png" alt="WEC" class="series-logo-img" />
+              </span>
+              <span>FIA WEC</span>
+            </button>
+
+            <button class="car-nav-btn" data-series="gt3">
+              <span class="series-logo-frame">
+                <img src="https://www.gt-world-challenge-europe.com/images/default/logo.png" alt="GT3" class="series-logo-img" />
+              </span>
+              <span>GT World</span>
+            </button>
+
+            <button class="car-nav-btn" data-series="wrc">
+              <span class="series-logo-frame">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/World_Rally_Championship_logo.svg/320px-World_Rally_Championship_logo.svg.png" alt="WRC" class="series-logo-img" />
+              </span>
+              <span>WRC Rally</span>
+            </button>
+          </div>
+
+          <!-- Horizontal Scroll Navigation Arrows -->
+          <div class="runway-arrows">
+            <button class="runway-arrow-btn" id="car-scroll-left" aria-label="Scroll cars left">
+              <i data-lucide="chevron-left"></i>
+            </button>
+            <button class="runway-arrow-btn" id="car-scroll-right" aria-label="Scroll cars right">
+              <i data-lucide="chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Horizontal Scrollable Runway for Cards -->
+        <div class="cars-runway-wrapper" id="cars-runway">
+          <div class="cars-cards-track" id="cars-cards-track">
+            <!-- Dynamic Tall Portrait Cards Injected via script.js -->
+          </div>
+        </div>
+
+      </div>
+    </section>
     <!-- ========================================================
          FUTURE SECTIONS CAN BE PASTED BELOW HERE:
          - SECTION 2: Event Dashboard (Filters, Track Layouts)

@@ -25,6 +25,9 @@ initEventsSection();
 
 // 7. Initialize News Feed Module
 initNewsSection();
+
+// 8. Initialize Cars Garage Showcase
+initCarsShowcase();
 });
 
 /* ==========================================================
@@ -1494,5 +1497,335 @@ function closeNewsModal() {
   const modalBackdrop = document.getElementById('news-modal-backdrop');
   if (modalBackdrop) {
     modalBackdrop.classList.remove('open');
+  }
+}
+
+/* ==========================================================
+   6. CARS SHOWCASE DATABASE & HORIZONTAL RUNWAY CONTROLLER
+   ========================================================== */
+
+const carsDatabase = {
+  // Formula 1: Exactly 1 Pinnacle Regulation Chassis
+  f1: [
+    {
+      maker: 'Formula 1 Technical Group',
+      name: 'F1 Hybrid Regulation 2026/27',
+      chassis: 'Carbon Composite Monocoque Gen-3',
+      classTag: 'Formula 1',
+      image: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80',
+      topSpeed: '358 KM/H',
+      acceleration: '2.4s',
+      weight: '768 KG',
+      engine: '1.6L V6 Turbo + 350kW MGU-K Hybrid',
+      downforce: '1,450 KG'
+    }
+  ],
+
+  // FIA WEC: 5 Top Hypercar Prototypes
+  wec: [
+    {
+      maker: 'Porsche Motorsport',
+      name: 'Porsche 963 LMDh',
+      chassis: 'Multimatic Carbon Tub',
+      classTag: 'WEC Hypercar',
+      image: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80',
+      topSpeed: '342 KM/H',
+      acceleration: '2.6s',
+      weight: '1,030 KG',
+      engine: '4.6L Twin-Turbo V8 Hybrid',
+      downforce: '1,680 KG'
+    },
+    {
+      maker: 'Ferrari Scuderia',
+      name: 'Ferrari 499P Hypercar',
+      chassis: 'Dallara Carbon Honeycomb',
+      classTag: 'WEC Hypercar',
+      image: 'https://images.unsplash.com/photo-1571607388263-1044f9ea01dd?auto=format&fit=crop&w=800&q=80',
+      topSpeed: '345 KM/H',
+      acceleration: '2.5s',
+      weight: '1,030 KG',
+      engine: '3.0L Twin-Turbo 120° V6 Hybrid',
+      downforce: '1,720 KG'
+    },
+    {
+      maker: 'Toyota Gazoo Racing',
+      name: 'Toyota GR010 Hybrid',
+      chassis: 'TGR High-Stiffness Composite',
+      classTag: 'WEC Hypercar',
+      image: 'https://images.unsplash.com/photo-1541348263662-e0c8de4259ba?auto=format&fit=crop&w=800&q=80',
+      topSpeed: '340 KM/H',
+      acceleration: '2.6s',
+      weight: '1,040 KG',
+      engine: '3.5L Twin-Turbo V6 AWD Hybrid',
+      downforce: '1,690 KG'
+    },
+    {
+      maker: 'Cadillac Racing',
+      name: 'Cadillac V-Series.R',
+      chassis: 'Dallara LMDh Spec',
+      classTag: 'WEC Hypercar',
+      image: 'https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=800&q=80',
+      topSpeed: '338 KM/H',
+      acceleration: '2.7s',
+      weight: '1,030 KG',
+      engine: '5.5L Naturally Aspirated V8',
+      downforce: '1,620 KG'
+    },
+    {
+      maker: 'Peugeot Sport',
+      name: 'Peugeot 9X8 2026 Winged',
+      chassis: 'Ligier Carbon Monocoque',
+      classTag: 'WEC Hypercar',
+      image: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80',
+      topSpeed: '339 KM/H',
+      acceleration: '2.6s',
+      weight: '1,030 KG',
+      engine: '2.6L Twin-Turbo V6 Hybrid',
+      downforce: '1,670 KG'
+    }
+  ],
+
+  // GT World Challenge: 5 Factory GT3 Thoroughbreds
+  gt3: [
+    {
+      maker: 'BMW M Motorsport',
+      name: 'BMW M4 GT3 EVO',
+      chassis: 'Lightweight Welded Steel/Carbon Cell',
+      classTag: 'GT3 Pro',
+      image: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80',
+      topSpeed: '305 KM/H',
+      acceleration: '3.1s',
+      weight: '1,260 KG',
+      engine: '3.0L M TwinPower Turbo Inline-6',
+      downforce: '1,120 KG'
+    },
+    {
+      maker: 'Porsche Motorsport',
+      name: 'Porsche 911 GT3 R (992)',
+      chassis: 'Aluminum-Steel Composite Body',
+      classTag: 'GT3 Pro',
+      image: 'https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=800&q=80',
+      topSpeed: '302 KM/H',
+      acceleration: '3.0s',
+      weight: '1,250 KG',
+      engine: '4.2L Water-Cooled Flat-6',
+      downforce: '1,180 KG'
+    },
+    {
+      maker: 'Mercedes-AMG',
+      name: 'Mercedes-AMG GT3',
+      chassis: 'Aluminum Spaceframe with Rollcage',
+      classTag: 'GT3 Pro',
+      image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
+      topSpeed: '308 KM/H',
+      acceleration: '3.2s',
+      weight: '1,285 KG',
+      engine: '6.2L Naturally Aspirated V8',
+      downforce: '1,150 KG'
+    },
+    {
+      maker: 'Lamborghini Squadra Corse',
+      name: 'Huracán GT3 EVO2',
+      chassis: 'Hybrid Carbon-Aluminum Skeleton',
+      classTag: 'GT3 Pro',
+      image: 'https://images.unsplash.com/photo-1541348263662-e0c8de4259ba?auto=format&fit=crop&w=800&q=80',
+      topSpeed: '306 KM/H',
+      acceleration: '3.1s',
+      weight: '1,255 KG',
+      engine: '5.2L Naturally Aspirated V10',
+      downforce: '1,140 KG'
+    },
+    {
+      maker: 'Ferrari Corse Clienti',
+      name: 'Ferrari 296 GT3',
+      chassis: 'Aluminum Monocoque Architecture',
+      classTag: 'GT3 Pro',
+      image: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80',
+      topSpeed: '310 KM/H',
+      acceleration: '2.9s',
+      weight: '1,250 KG',
+      engine: '3.0L 120° Twin-Turbo V6',
+      downforce: '1,210 KG'
+    }
+  ],
+
+  // WRC Rally: 5 All-Terrain Rally1 War Machines
+  wrc: [
+    {
+      maker: 'Toyota Gazoo Racing',
+      name: 'GR Yaris Rally1',
+      chassis: 'FIA Spaceframe Tub Integration',
+      classTag: 'Rally1',
+      image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80',
+      topSpeed: '215 KM/H',
+      acceleration: '3.2s',
+      weight: '1,190 KG',
+      engine: '1.6L Direct Injection Turbo (380 BHP)',
+      downforce: '720 KG'
+    },
+    {
+      maker: 'Hyundai Motorsport',
+      name: 'i20 N Rally1',
+      chassis: 'Reinforced Tubular Steel Rollcage',
+      classTag: 'Rally1',
+      image: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80',
+      topSpeed: '218 KM/H',
+      acceleration: '3.2s',
+      weight: '1,190 KG',
+      engine: '1.6L Turbo + AWD Mechanical Diffs',
+      downforce: '740 KG'
+    },
+    {
+      maker: 'M-Sport Ford',
+      name: 'Puma Rally1',
+      chassis: 'Custom Multi-Point Tubular Frame',
+      classTag: 'Rally1',
+      image: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80',
+      topSpeed: '212 KM/H',
+      acceleration: '3.3s',
+      weight: '1,190 KG',
+      engine: '1.6L EcoBoost 100% Fossil-Free',
+      downforce: '710 KG'
+    },
+    {
+      maker: 'Škoda Motorsport',
+      name: 'Fabia RS Rally2 Evo',
+      chassis: 'Production Shell Reinforced',
+      classTag: 'WRC2',
+      image: 'https://images.unsplash.com/photo-1541348263662-e0c8de4259ba?auto=format&fit=crop&w=800&q=80',
+      topSpeed: '202 KM/H',
+      acceleration: '3.8s',
+      weight: '1,230 KG',
+      engine: '1.6L Turbo Charged 290 BHP',
+      downforce: '580 KG'
+    },
+    {
+      maker: 'Citroën Racing',
+      name: 'C3 Rally2 Works',
+      chassis: 'FIA Certified Welded Cage',
+      classTag: 'WRC2',
+      image: 'https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=800&q=80',
+      topSpeed: '205 KM/H',
+      acceleration: '3.7s',
+      weight: '1,230 KG',
+      engine: '1.6L 16V Turbo Direct Injection',
+      downforce: '590 KG'
+    }
+  ]
+};
+
+let currentCarsSeries = 'f1';
+
+function initCarsShowcase() {
+  const navButtons = document.querySelectorAll('.car-nav-btn');
+  const runway = document.getElementById('cars-runway');
+  const scrollLeftBtn = document.getElementById('car-scroll-left');
+  const scrollRightBtn = document.getElementById('car-scroll-right');
+
+  // Initial render: F1 by default
+  renderCarsRunway('f1');
+
+  // Series button click
+  navButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      navButtons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      currentCarsSeries = btn.getAttribute('data-series');
+      renderCarsRunway(currentCarsSeries);
+
+      // Reset scroll position to start
+      if (runway) {
+        runway.scrollTo({ left: 0, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Arrow controls for horizontal scrolling
+  if (scrollLeftBtn && runway) {
+    scrollLeftBtn.addEventListener('click', () => {
+      runway.scrollBy({ left: -340, behavior: 'smooth' });
+    });
+  }
+
+  if (scrollRightBtn && runway) {
+    scrollRightBtn.addEventListener('click', () => {
+      runway.scrollBy({ left: 340, behavior: 'smooth' });
+    });
+  }
+}
+
+/**
+ * Builds and injects tall portrait cards into the horizontal runway
+ */
+function renderCarsRunway(seriesKey) {
+  const track = document.getElementById('cars-cards-track');
+  const carsList = carsDatabase[seriesKey];
+
+  if (!track || !carsList) return;
+
+  let runwayHTML = '';
+
+  carsList.forEach((car) => {
+    runwayHTML += `
+      <article class="tall-car-card">
+        <!-- Top Image -->
+        <div class="car-card-media">
+          <img 
+            src="${car.image}" 
+            alt="${car.name}" 
+            class="car-card-photo" 
+            loading="lazy" 
+            onerror="this.src='https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80'"
+          />
+          <div class="car-overlay-gradient"></div>
+          <span class="car-class-badge">${car.classTag}</span>
+        </div>
+
+        <!-- Details Body -->
+        <div class="car-card-body">
+          <div class="car-card-titles">
+            <span class="car-maker-tag">${car.maker}</span>
+            <h3 class="car-name-title">${car.name}</h3>
+            <span class="car-chassis-sub">${car.chassis}</span>
+          </div>
+
+          <!-- Specs Matrix -->
+          <div class="car-specs-grid">
+            <div class="spec-cell">
+              <span class="spec-key">Top Speed</span>
+              <span class="spec-val accent">${car.topSpeed}</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-key">0-100 KM/H</span>
+              <span class="spec-val">${car.acceleration}</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-key">Weight</span>
+              <span class="spec-val">${car.weight}</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-key">Downforce</span>
+              <span class="spec-val accent">${car.downforce}</span>
+            </div>
+          </div>
+
+          <!-- Footer: Powertrain details -->
+          <div class="car-card-footer">
+            <div class="engine-summary">
+              <i data-lucide="cpu" style="width:14px;height:14px;" class="text-green"></i>
+              <span>${car.engine}</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+  });
+
+  track.innerHTML = runwayHTML;
+
+  // Re-generate Lucide icons
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
   }
 }
