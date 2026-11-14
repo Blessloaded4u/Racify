@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 6. Initialize Events Section Module
 initEventsSection();
+
+// 7. Initialize News Feed Module
+initNewsSection();
 });
 
 /* ==========================================================
@@ -1144,4 +1147,352 @@ function setupCardClickExpansion() {
       card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
   });
+}
+
+/* ==========================================================
+   5. LATEST NEWS SYSTEM (SORTED, UNREAD BEACONS & MODAL)
+   ========================================================== */
+
+const newsDatabase = [
+  {
+    id: 'news-1',
+    series: 'f1',
+    seriesName: 'Formula 1',
+    isRead: false,
+    timestamp: 1731600000000,
+    dateString: 'Nov 14, 2026',
+    readTime: '3 min read',
+    title: 'FIA Finalizes 2027 Active Aerodynamics Regulations Ahead of Winter Testing',
+    snippet: 'Groundbreaking CFD regulations reveal automated wing-angle overrides and reduced dirty air wake profiles for the upcoming engine formula...',
+    fullPages: [
+      {
+        tag: 'STAGE 1: BRIEFING',
+        title: 'Active Aero Regulations Confirmed for 2027',
+        body: 'The FIA World Motor Sport Council has formally ratified the 2027 technical package. The highlight is the newly christened "Z-Mode" and "X-Mode" active drag configuration, allowing cars to dynamically trim downforce on straightaways without relying exclusively on manual DRS activation.'
+      },
+      {
+        tag: 'STAGE 2: TECHNICAL SPECS',
+        title: 'CFD Profiles & Weight Reduction',
+        body: 'Minimum vehicle weight will be trimmed down by 30kg, reversing a decade-long upward trajectory. Front and rear wing element chords have been standardized to limit outwash vortex creation, improving trailing car stability in cornering sequences by an estimated 28%.'
+      },
+      {
+        tag: 'STAGE 3: PADDOCK REACTION',
+        title: 'Constructors Weigh In',
+        body: 'Team principals have expressed enthusiasm for the mechanical simplicity of the active aerodynamic servos. Pre-season wind tunnel allocation windows will expand by 40 hours in early 2027 to assist teams in validating telemetry baselines.'
+      }
+    ]
+  },
+  {
+    id: 'news-2',
+    series: 'wec',
+    seriesName: 'FIA WEC',
+    isRead: false,
+    timestamp: 1731513600000,
+    dateString: 'Nov 13, 2026',
+    readTime: '4 min read',
+    title: 'Ferrari AF Corse Completes 36-Hour Endurance Simulation at Paul Ricard',
+    snippet: 'Intensive twin-engine dyno testing and Michelin compound durability programs signal renewed confidence ahead of next season’s 24 Hours of Le Mans...',
+    fullPages: [
+      {
+        tag: 'STAGE 1: ENDURANCE TEST',
+        title: '36-Hour Marathon Trial at Le Castellet',
+        body: 'The 499P Hypercar successfully logged over 5,400 uninterrupted track kilometers across 36 hours. Testing centered on hybrid power delivery stabilization during cold night ambient drops under 8°C.'
+      },
+      {
+        tag: 'STAGE 2: TELEMETRY ANALYSIS',
+        title: 'Tire Degradation Vectors',
+        body: 'Telemetry showed a 0.2-second improvement in quadruple-stint tire consistency. Brake regeneration efficiency climbed to 94.2%, reducing cooling duct drag along the 1.8km Mistral straight.'
+      }
+    ]
+  },
+  {
+    id: 'news-3',
+    series: 'gt3',
+    seriesName: 'GT World',
+    isRead: false,
+    timestamp: 1731427200000,
+    dateString: 'Nov 12, 2026',
+    readTime: '2 min read',
+    title: 'SRO Unveils Record 62-Car Entry List for 2027 CrowdStrike 24 Hours of Spa',
+    snippet: 'Nine world-class manufacturers represented in Pro Cup, with BMW, Porsche, Ferrari, and Lamborghini fielding factory-backed endurance lineups...',
+    fullPages: [
+      {
+        tag: 'STAGE 1: ENTRY ANNOUNCEMENT',
+        title: 'Record Grid Set for Ardennes Classic',
+        body: 'The centenary edition of the 24 Hours of Spa will see the largest Pro-category grid since 2019. Over twenty GT3 cars are separated by less than half a second in simulated Balance of Performance simulations.'
+      },
+      {
+        tag: 'STAGE 2: DRIVER ROSTER',
+        title: 'Superstars in Machinery',
+        body: 'Leading factory aces will join forces with top junior formula stars. Extended pit stops for brake pad replacements will remain mandatory to reward well-drilled pit crews.'
+      }
+    ]
+  },
+  {
+    id: 'news-4',
+    series: 'wrc',
+    seriesName: 'WRC Rally',
+    isRead: false,
+    timestamp: 1731340800000,
+    dateString: 'Nov 11, 2026',
+    readTime: '3 min read',
+    title: 'WRC Proposes Non-Hybrid Rally1 Chassis Regulations for Enhanced Agility',
+    snippet: 'Manufacturers back simplified sustainable-fuel turbo powertrains to curb costs and attract customer teams for 2027 Monte-Carlo championship kickoff...',
+    fullPages: [
+      {
+        tag: 'STAGE 1: POWERTRAIN SHIFT',
+        title: 'Simplified Sustainable Powertrains',
+        body: 'The FIA has greenlit a streamlined powertrain architecture. By eliminating heavy auxiliary high-voltage battery modules, rally cars will shed approximately 100kg, returning to aggressive high-yaw corner transitions.'
+      },
+      {
+        tag: 'STAGE 2: SUSPENSION KINEMATICS',
+        title: 'Longer Wheel Travel for Rough Terrain',
+        body: 'Teams will gain an extra 40mm of wheel articulation, enhancing jump landing dampening on grueling stages like Safari Rally Kenya and Acropolis Rally Greece.'
+      }
+    ]
+  },
+  {
+    id: 'news-5',
+    series: 'f1',
+    seriesName: 'Formula 1',
+    isRead: false,
+    timestamp: 1731254400000,
+    dateString: 'Nov 10, 2026',
+    readTime: '3 min read',
+    title: 'McLaren Opens Advanced High-Altitude Sim Facility to Accelerate In-Season Updates',
+    snippet: 'State-of-the-art multi-axis cockpit simulator allows aerodynamicists to model tire micro-grain under severe high-speed thermal cycles...',
+    fullPages: [
+      {
+        tag: 'STAGE 1: INFRASTRUCTURE',
+        title: 'Next-Gen Simulator Operational',
+        body: 'Constructed at the McLaren Technology Centre in Woking, the dynamic motion rig features cryogenic cockpit conditioning and 360-degree LIDAR track mapping with sub-millimeter precision.'
+      },
+      {
+        tag: 'STAGE 2: DRIVER FEEDBACK',
+        title: 'Virtual Tire Correlation',
+        body: 'Engineers report an unprecedented 98.4% correlation between real-world track telemetry and driver-in-the-loop virtual test runs.'
+      }
+    ]
+  },
+  {
+    id: 'news-6',
+    series: 'wec',
+    seriesName: 'FIA WEC',
+    isRead: false,
+    timestamp: 1731168000000,
+    dateString: 'Nov 09, 2026',
+    readTime: '2 min read',
+    title: 'Aston Martin Valkyrie Hypercar Completes First High-Downforce Aero Shakedown',
+    snippet: 'The atmospheric 6.5-litre V12 machine reverberates across Silverstone as factory drivers confirm structural stiffness and cooling throughput...',
+    fullPages: [
+      {
+        tag: 'STAGE 1: SHAKEDOWN RUN',
+        title: 'Naturally Aspirated V12 Returns',
+        body: 'The Aston Martin Valkyrie Le Mans prototype turned its first high-speed laps on the Silverstone International Circuit. Chief engineers reported immaculate drivetrain cooling efficiency despite ambient temperatures reaching 30°C.'
+      }
+    ]
+  },
+  {
+    id: 'news-7',
+    series: 'gt3',
+    seriesName: 'GT World',
+    isRead: false,
+    timestamp: 1731081600000,
+    dateString: 'Nov 08, 2026',
+    readTime: '3 min read',
+    title: 'Manthey Racing Confirms 2-Car Porsche 911 GT3 R Program for Nürburgring 24h',
+    snippet: 'The iconic "Grello" livery returns to the Green Hell with a star-studded driver lineup aiming for a record-extending eighth overall victory...',
+    fullPages: [
+      {
+        tag: 'STAGE 1: GREEN HELL CHALLENGE',
+        title: 'Grello Returns to Nordschleife',
+        body: 'Manthey EMA will deploy twin factory-supported Porsche 911 GT3 R chassis. Focus has been placed on improving damper rebound across the Flugplatz and Karussell compression bumps.'
+      }
+    ]
+  },
+  {
+    id: 'news-8',
+    series: 'wrc',
+    seriesName: 'WRC Rally',
+    isRead: false,
+    timestamp: 1730995200000,
+    dateString: 'Nov 07, 2026',
+    readTime: '4 min read',
+    title: 'Pirelli Develops Reinforced Studded Ice Compound for Rally Sweden 2027',
+    snippet: 'New vulcanization technique locks 384 tungsten-tipped studs into the tread block, offering 15% better retention over frozen gravel banks...',
+    fullPages: [
+      {
+        tag: 'STAGE 1: WINTER INNOVATION',
+        title: 'Tungsten Stud Retention Breakthrough',
+        body: 'Sub-zero testing in Swedish Lapland verified that the newly patented vulcanized stud base prevents premature stud loss when stage lines degrade down into exposed gravel ruts.'
+      }
+    ]
+  }
+];
+
+let activeNewsSeries = 'all';
+
+function initNewsSection() {
+  const navButtons = document.querySelectorAll('.news-nav-btn');
+  const modalBackdrop = document.getElementById('news-modal-backdrop');
+  const modalCloseBtn = document.getElementById('modal-close-btn');
+
+  // Initial render
+  renderNewsCards();
+
+  // Series Filtering
+  navButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      navButtons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      activeNewsSeries = btn.getAttribute('data-series');
+      renderNewsCards();
+    });
+  });
+
+  // Modal Close Handlers
+  if (modalCloseBtn && modalBackdrop) {
+    modalCloseBtn.addEventListener('click', closeNewsModal);
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) closeNewsModal();
+    });
+  }
+
+  // Keyboard Escape Key to close modal
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeNewsModal();
+  });
+}
+
+/**
+ * Renders news cards sorted by timestamp (most recent first)
+ */
+function renderNewsCards() {
+  const container = document.getElementById('news-grid-display');
+  if (!container) return;
+
+  // 1. Filter
+  let filtered = newsDatabase.filter((item) => {
+    return activeNewsSeries === 'all' ? true : item.series === activeNewsSeries;
+  });
+
+  // 2. Sort by most recent
+  filtered.sort((a, b) => b.timestamp - a.timestamp);
+
+  // 3. Build HTML
+  let cardsHTML = '';
+  filtered.forEach((item) => {
+    const readClass = item.isRead ? 'is-read' : '';
+    const beaconHTML = item.isRead 
+      ? '' 
+      : `<span class="unread-beacon-dot pulse" title="Unread News"></span>`;
+
+    cardsHTML += `
+      <article class="news-card-item slant-box ${readClass}" data-news-id="${item.id}">
+        <div class="news-card-top">
+          <h3 class="news-headline-title">${item.title}</h3>
+          ${beaconHTML}
+        </div>
+
+        <p class="news-card-snippet">${item.snippet}</p>
+
+        <div class="news-card-footer">
+          <div class="news-footer-left">
+            <span class="series-tag ${item.series}">${item.seriesName}</span>
+            <span class="news-date-tag">${item.dateString}</span>
+          </div>
+          <span class="read-time-pill">
+            <i data-lucide="clock" style="width:11px;height:11px;"></i>
+            <span>${item.readTime}</span>
+          </span>
+        </div>
+      </article>
+    `;
+  });
+
+  container.innerHTML = cardsHTML;
+
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+
+  // Bind Card Click to Open Horizontal Modal & Turn off beacon
+  bindCardClickModal();
+}
+
+/**
+ * Opens News Modal as a Single Continuous Vertical Article
+ * Turns off the unread beacon and applies a soft background blur
+ */
+function bindCardClickModal() {
+  const cards = document.querySelectorAll('.news-card-item');
+
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const newsId = card.getAttribute('data-news-id');
+      const item = newsDatabase.find((n) => n.id === newsId);
+
+      if (!item) return;
+
+      // 1. Turn off beacon and mark as read
+      item.isRead = true;
+      card.classList.add('is-read');
+
+      // 2. Populate Header Meta
+      const modalTag = document.getElementById('modal-series-tag');
+      const modalDate = document.getElementById('modal-date-text');
+      const modalReadTime = document.getElementById('modal-read-time');
+      const articleBody = document.getElementById('modal-article-body');
+
+      if (modalTag) {
+        modalTag.innerText = item.seriesName;
+        modalTag.className = `series-tag ${item.series}`;
+      }
+      if (modalDate) modalDate.innerText = item.dateString;
+      if (modalReadTime) modalReadTime.innerText = item.readTime.toUpperCase();
+
+      // 3. Assemble Single-Page Vertical Article
+      let fullArticleHTML = `
+        <h2 class="article-headline">${item.title}</h2>
+        <p class="article-lead">${item.snippet}</p>
+      `;
+
+      // Append content sections in natural vertical order
+      item.fullPages.forEach((page) => {
+        fullArticleHTML += `
+          <h3 class="article-section-title">${page.title}</h3>
+          <p class="article-paragraph">${page.body}</p>
+        `;
+      });
+
+      // Add a paddock debrief quote highlight
+      fullArticleHTML += `
+        <div class="article-quote-block">
+          "The mechanical and aerodynamic balance achieved here establishes a strong baseline for team engineers as we head into the upcoming championship rounds."
+        </div>
+        <p class="article-paragraph">
+          Official telemetry updates, onboard audio files, and sector-by-sector driver deltas will continue to stream live directly to Racify subscribers.
+        </p>
+      `;
+
+      if (articleBody) {
+        articleBody.innerHTML = fullArticleHTML;
+        articleBody.scrollTop = 0; // Reset scroll to top
+      }
+
+      // 4. Open Modal Window
+      const modalBackdrop = document.getElementById('news-modal-backdrop');
+      if (modalBackdrop) {
+        modalBackdrop.classList.add('open');
+      }
+    });
+  });
+}
+
+function closeNewsModal() {
+  const modalBackdrop = document.getElementById('news-modal-backdrop');
+  if (modalBackdrop) {
+    modalBackdrop.classList.remove('open');
+  }
 }

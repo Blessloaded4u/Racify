@@ -334,6 +334,107 @@
 
       </div>
     </section>
+
+    <!-- ==================== SECTION 4: LATEST NEWS ==================== -->
+    <section class="racing-news-section" id="news">
+      <div class="section-container">
+        
+        <!-- Header -->
+        <div class="news-header-center">
+          <span class="sub-badge">Paddock Wire & Dispatches</span>
+          <h2 class="section-title">LATEST NEWS</h2>
+          <div class="title-accent-bar"></div>
+        </div>
+
+        <!-- Outer Master Slanted Container (Matching CTA Button Geometry) -->
+        <div class="news-master-frame slant-box">
+          <div class="news-frame-inner">
+
+            <!-- LEFT 1/4: Fixed Series Navigation Panel -->
+            <aside class="news-vertical-nav" id="news-series-nav">
+              <div class="nav-rail-header">
+                <i data-lucide="radio" class="text-green"></i>
+                <span>FEED CHANNELS</span>
+              </div>
+
+              <div class="nav-rail-buttons">
+                <button class="news-nav-btn active" data-series="all">
+                  <span class="nav-btn-icon"><i data-lucide="layers"></i></span>
+                  <span class="nav-btn-title">ALL SERIES</span>
+                  <span class="nav-btn-pill" id="badge-count-all">12</span>
+                </button>
+
+                <button class="news-nav-btn" data-series="f1">
+                  <span class="nav-btn-icon"><i data-lucide="flag"></i></span>
+                  <span class="nav-btn-title">Formula 1</span>
+                  <span class="nav-btn-pill" id="badge-count-f1">3</span>
+                </button>
+
+                <button class="news-nav-btn" data-series="wec">
+                  <span class="nav-btn-icon"><i data-lucide="shield"></i></span>
+                  <span class="nav-btn-title">FIA WEC</span>
+                  <span class="nav-btn-pill" id="badge-count-wec">3</span>
+                </button>
+
+                <button class="news-nav-btn" data-series="gt3">
+                  <span class="nav-btn-icon"><i data-lucide="zap"></i></span>
+                  <span class="nav-btn-title">GT World</span>
+                  <span class="nav-btn-pill" id="badge-count-gt3">3</span>
+                </button>
+
+                <button class="news-nav-btn" data-series="wrc">
+                  <span class="nav-btn-icon"><i data-lucide="compass"></i></span>
+                  <span class="nav-btn-title">WRC Rally</span>
+                  <span class="nav-btn-pill" id="badge-count-wrc">3</span>
+                </button>
+              </div>
+
+              <div class="nav-rail-footer">
+                <span class="status-live-beacon"></span>
+                <span class="text-muted" style="font-size:0.7rem;">Live Wire Synced</span>
+              </div>
+            </aside>
+
+            <!-- RIGHT 3/4: Two-Row Scrollable News Grid Display -->
+            <div class="news-cards-panel">
+              <div class="news-scroll-viewport" id="news-scroll-viewport">
+                <div class="news-grid-display" id="news-grid-display">
+                  <!-- News Cards Injected dynamically via script.js -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== VERTICAL NEWS DETAIL MODAL ==================== -->
+    <div class="news-modal-backdrop" id="news-modal-backdrop">
+      <div class="news-modal-window slant-box" id="news-modal-window">
+        
+        <!-- Modal Top Bar -->
+        <div class="news-modal-header">
+          <div class="modal-header-meta">
+            <span class="series-tag f1" id="modal-series-tag">Formula 1</span>
+            <span class="modal-date-text" id="modal-date-text">Nov 14, 2026</span>
+            <span class="modal-read-pill" id="modal-read-time">3 MIN READ</span>
+          </div>
+          
+          <button class="modal-close-btn" id="modal-close-btn" aria-label="Close News Window">
+            <span>CLOSE</span>
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+
+        <!-- Single Continuous Vertical Article Body -->
+        <div class="news-modal-body" id="modal-article-body">
+          <!-- Injected dynamically via script.js -->
+        </div>
+
+      </div>
+    </div>
     <!-- ========================================================
          FUTURE SECTIONS CAN BE PASTED BELOW HERE:
          - SECTION 2: Event Dashboard (Filters, Track Layouts)
