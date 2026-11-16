@@ -3,64 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Racify is a motorsport hub: live race status, championship standings, the global calendar, news and technical specs for F1, WEC, GT World Challenge and WRC." />
+  <meta name="theme-color" content="#010112" />
   <title>Racify | Power • Performance • Speed</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Orbitron:wght@600;800;900&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
 
-  <!-- Lucide Icons Library -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <!-- CONNECTING STYLESHEET -->
   <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
 
-  <!-- Ambient Race Stage Lighting -->
-  <div class="ambient-glow top-center"></div>
-  <div class="ambient-glow mid-left"></div>
+  <header class="site-header">
+    <div class="wrap header-inner">
 
-  <!-- NAVIGATION HEADER -->
-  <header class="navbar">
-    <div class="nav-container">
-      
-      <!-- Brand Logo -->
-      <a href="#" class="brand-logo">
-        <div class="logo-box">
-          <i data-lucide="gauge"></i>
-        </div>
-        <div class="logo-text">
-          <span class="logo-title">RACI<span class="text-green">FY</span></span>
-          <span class="logo-sub">Motorsport Hub</span>
-        </div>
+      <a href="#top" class="brand" aria-label="Racify home">
+        <span class="brand-mark"><i data-lucide="gauge"></i></span>
+        <span>
+          <span class="brand-name">RACI<span>FY</span></span>
+          <span class="brand-sub">Motorsport Hub</span>
+        </span>
       </a>
 
-      <!-- Navigation Links -->
-      <nav class="nav-links" id="nav-links">
-        <a href="#events" class="nav-link active">
-          <span class="live-dot"></span> Live Events
-        </a>
-        <a href="#series" class="nav-link">Series Hub</a>
-        <a href="#telemetry" class="nav-link">Telemetry</a>
-        <a href="#community" class="nav-link">Paddock Club</a>
-        <a href="#news" class="nav-link">News</a>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="#events"><span class="dot"></span> Live Events</a>
+        <a href="#leaderboard">Standings</a>
+        <a href="#garage">Machines</a>
+        <a href="#news">News</a>
+        <a href="#partners">Partners</a>
       </nav>
 
-      <!-- Nav Actions & Mobile Toggle -->
-      <div class="nav-actions">
-        <div class="live-pill-badge">
-          <span class="pulse-indicator"></span>
+      <div class="header-tools">
+        <p class="live-chip">
+          <span class="dot dot-pulse"></span>
           <span>IMSA Daytona 24h: <strong>Lap 412/700</strong></span>
-        </div>
-        
-        <a href="#race-center" class="btn btn-primary slant-pill">
+        </p>
+        <a href="#events" class="btn btn-primary header-cta">
           <span>Race Center</span>
           <i data-lucide="chevron-right"></i>
         </a>
-
-        <button class="mobile-toggle-btn" id="mobile-toggle" aria-label="Toggle navigation">
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
           <i data-lucide="menu"></i>
         </button>
       </div>
@@ -68,726 +53,377 @@
     </div>
   </header>
 
-  <!-- MAIN CONTENT CONTAINER -->
   <main>
-    <!-- ==================== HERO SECTION ==================== -->
-    <section class="hero-section racing-pattern" id="hero">
-      <div class="section-container">
-        
-        <!-- Top Status Ribbon & Counters -->
-        <div class="hero-ribbon">
-          <div class="platform-tag">
-            <i data-lucide="zap"></i>
-            <span>Official Motorsport Data Platform</span>
-          </div>
 
-          <!-- Counter Stats -->
-          <div class="hero-stats">
-            <div class="stat-item">
-              <span class="stat-number">120<span class="text-green">+</span></span>
-              <span class="stat-label">Active Circuits</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-              <span class="stat-number">50<span class="text-green">+</span></span>
-              <span class="stat-label">Global Series</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-              <span class="stat-number">1.2M<span class="text-green">+</span></span>
-              <span class="stat-label">Enthusiasts</span>
-            </div>
-          </div>
-        </div>
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
 
-        <!-- Main Headline -->
-        <div class="hero-headline-block">
-          <h2 class="sub-headline">POWER • PERFORMANCE • SPEED</h2>
-          <h1 class="main-headline">
-            DEFINED BY <span class="text-green green-glow-text">VICTORY.</span>
-          </h1>
-          <p class="hero-description">
+        <div class="hero-copy">
+          <p class="eyebrow"><i data-lucide="zap"></i> Official Motorsport Data Platform</p>
+          <p class="kicker">Power • Performance • Speed</p>
+          <h1>Defined by <em>victory.</em></h1>
+          <p class="lead">
             Real-time circuit telemetry, synchronized global race calendars, and inside pitwall intelligence. Your high-speed paddock passes in one seamless terminal.
           </p>
 
-          <!-- Action Buttons -->
-          <div class="hero-buttons">
-            <a href="#calendar" class="btn btn-primary slant-pill btn-lg">
-              Explore 2026 Calendar
-            </a>
-            <a href="#telemetry" class="btn btn-outline slant-pill btn-lg">
-              <i data-lucide="play" class="fill-current"></i>
+          <div class="hero-actions">
+            <a href="#events" class="btn btn-primary btn-lg">Explore 2026 Calendar</a>
+            <a href="#leaderboard" class="btn btn-ghost btn-lg">
+              <i data-lucide="play"></i>
               <span>Live Telemetry Demo</span>
             </a>
           </div>
+
+          <ul class="hero-stats">
+            <li><strong>120<span>+</span></strong><span>Active Circuits</span></li>
+            <li><strong>50<span>+</span></strong><span>Global Series</span></li>
+            <li><strong>1.2M<span>+</span></strong><span>Enthusiasts</span></li>
+          </ul>
         </div>
 
-        <!-- ================= HERO STAGE & 3D CAR ================= -->
-        <div class="hero-stage" id="hero-stage">
-          <div class="car-underglow"></div>
+        <figure class="hero-media">
+          <img src="Assets/Hero.jfif" alt="Blue and orange GT3 race car taking a corner" fetchpriority="high" />
+          <figcaption class="hero-tag"><span class="dot dot-pulse"></span> Aero downforce: 1,420 kg</figcaption>
+        </figure>
 
-          <!-- Car Wrapper (Tilts on mouse movement) -->
-          <div class="car-wrapper" id="car-wrapper">
-            <!-- Swap this src with your own image asset anytime -->
-            <img 
-              id="hero-car-image"
-              src="Assets/Hero.jfif" 
-              alt="GT Endurance Race Car" 
-              class="hero-car-img" 
-            />
+      </div>
 
-            <!-- Interactive Floating Pin Badge -->
-            <div class="car-hud-pin">
-              <span class="pulse-indicator"></span>
-              <span>AERO DOWNFORCE: 1,420 KG</span>
-            </div>
-          </div>
+      <div class="features">
+        <div class="wrap features-grid">
 
-          <!-- ================= 3 FLOATING ADVANTAGE CARDS ================= -->
+          <article class="feature">
+            <div class="feature-top">
+              <span class="feature-icon"><i data-lucide="activity"></i></span>
+              <span class="tag">0.02s Latency</span>
+            </div>
+            <h3>Live Telemetry HUD</h3>
+            <p>Millisecond sector deltas, tire degradation vectors, and direct pit-radio feeds synced across all devices.</p>
+            <p class="readout"><span>Sector 1 Velocity</span><strong id="speed-readout">318.4 km/h</strong></p>
+          </article>
 
-          <!-- Advantage Card 1: Top Left -->
-          <div class="hud-card card-left float-slow">
-            <div class="hud-card-header">
-              <div class="hud-icon-box">
-                <i data-lucide="activity"></i>
-              </div>
-              <span class="hud-tag">0.02s Latency</span>
+          <article class="feature">
+            <div class="feature-top">
+              <span class="feature-icon"><i data-lucide="calendar-check"></i></span>
+              <span class="tag">Auto-Timezone</span>
             </div>
-            <h3 class="hud-card-title">Live Telemetry HUD</h3>
-            <p class="hud-card-desc">
-              Millisecond sector deltas, tire degradation vectors, and direct pit-radio feeds synced across all devices.
-            </p>
-            <div class="hud-card-footer">
-              <span class="text-muted">Sector 1 Velocity</span>
-              <span class="footer-highlight">318.4 KM/H</span>
-            </div>
-          </div>
+            <h3>Unified Calendar</h3>
+            <p>Never miss a green flag. F1, WEC, IMSA, 24H Series, and Super GT synchronized with one-click ICS export.</p>
+            <p class="readout"><span>Next Green Flag</span><strong id="green-flag-clock">2h : 14m : 08s</strong></p>
+          </article>
 
-          <!-- Advantage Card 2: Top Right -->
-          <div class="hud-card card-right float-delayed">
-            <div class="hud-card-header">
-              <div class="hud-icon-box">
-                <i data-lucide="calendar-check"></i>
-              </div>
-              <span class="hud-tag">Auto-Timezone</span>
+          <article class="feature">
+            <div class="feature-top">
+              <span class="feature-icon"><i data-lucide="shield-check"></i></span>
+              <span class="tag">Paddock Club</span>
             </div>
-            <h3 class="hud-card-title">Unified Calendar</h3>
-            <p class="hud-card-desc">
-              Never miss a green flag. F1, WEC, IMSA, 24H Series, and Super GT synchronized with one-click ICS export.
-            </p>
-            <div class="hud-card-footer">
-              <span class="text-muted">Next Green Flag:</span>
-              <span class="text-green font-tech">2h : 14m : 08s</span>
-            </div>
-          </div>
-
-          <!-- Advantage Card 3: Bottom Left -->
-          <div class="hud-card card-bottom float-rev">
-            <div class="hud-card-header">
-              <div class="hud-icon-box">
-                <i data-lucide="shield-check"></i>
-              </div>
-              <span class="text-muted uppercase text-xs font-tech">Paddock Club</span>
-            </div>
-            <h3 class="hud-card-title">Driver & Sim Insights</h3>
-            <p class="hud-card-desc">
-              Exclusive race engineering debriefs, setups analysis, track-walk diagrams, and verified community forums.
-            </p>
-          </div>
+            <h3>Driver &amp; Sim Insights</h3>
+            <p>Exclusive race engineering debriefs, setups analysis, track-walk diagrams, and verified community forums.</p>
+          </article>
 
         </div>
-        <!-- End of Hero Stage -->
-
       </div>
     </section>
 
-    <!-- ==================== CURRENT LEADERBOARD SECTION ==================== -->
-    <section class="leaderboard-section" id="leaderboard">
-      <div class="section-container">
-        
-        <!-- Header & Subheader -->
-        <div class="leaderboard-header">
-          <div class="leaderboard-tag">
-            <span class="live-dot"></span>
-            <span>2026 World Championship</span>
-          </div>
-          <h2 class="leaderboard-title">CURRENT LEADERBOARD</h2>
-          <p class="leaderboard-subtitle">Official Constructors & Team Standings across global race events</p>
+    <!-- Standings -->
+    <section class="section" id="leaderboard">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow"><span class="dot"></span> 2026 World Championship</p>
+          <h2>Current Leaderboard</h2>
+          <p>Official Constructors &amp; Team Standings across global race events</p>
         </div>
 
-        <!-- Series Selector Buttons -->
-        <!-- Series Selector Buttons with Custom Logo Badges -->
-        <div class="series-nav" id="series-nav">
-          <button class="series-btn active" data-series="f1">
-            <span class="series-logo-frame">
-              <!-- Replace src with your custom logo -->
-              <img src="Assets/F1logo.png" alt="F1 Logo" class="series-logo-img" />
-            </span>
+        <div class="tabs" id="standings-tabs">
+          <button class="tab is-active" type="button" data-series="f1" aria-pressed="true">
+            <span class="logo-chip"><img class="logo-img" src="Assets/F1logo.png" alt="" data-initials="F1" /></span>
             <span>Formula 1</span>
           </button>
-
-          <button class="series-btn" data-series="wec">
-            <span class="series-logo-frame">
-              <!-- Replace src with your custom logo -->
-              <img src="Assets/WEC.webp" alt="WEC Logo" class="series-logo-img" />
-            </span>
+          <button class="tab" type="button" data-series="wec" aria-pressed="false">
+            <span class="logo-chip"><img class="logo-img" src="Assets/WEC.webp" alt="" data-initials="WEC" /></span>
             <span>FIA WEC</span>
           </button>
-
-          <button class="series-btn" data-series="gt3">
-            <span class="series-logo-frame">
-              <!-- Replace src with your custom logo -->
-              <img src="Assets/GT World Chanllenge.webp" alt="GT3 Logo" class="series-logo-img" />
-            </span>
+          <button class="tab" type="button" data-series="gt3" aria-pressed="false">
+            <span class="logo-chip"><img class="logo-img" src="Assets/GT World Chanllenge.webp" alt="" data-initials="GT" /></span>
             <span>GT World Challenge</span>
           </button>
-
-          <button class="series-btn" data-series="wrc">
-            <span class="series-logo-frame">
-              <!-- Replace src with your custom logo -->
-              <img src="Assets/wrc.webp" alt="WRC Logo" class="series-logo-img" />
-            </span>
+          <button class="tab" type="button" data-series="wrc" aria-pressed="false">
+            <span class="logo-chip"><img class="logo-img" src="Assets/wrc.webp" alt="" data-initials="WRC" /></span>
             <span>WRC Rally</span>
           </button>
         </div>
 
-        <!-- Table Container with Mobile-Friendly Horizontal Scroll -->
-        <div class="table-wrapper">
-          <div class="table-scroll-hint">
-            <i data-lucide="arrow-left-right"></i>
-            <span>Swipe horizontally to view all 10 race events</span>
-          </div>
-
-          <div class="table-responsive">
-            <table class="leaderboard-table" id="leaderboard-table">
-              <thead>
-                <tr id="table-head-row">
-                  <!-- Injected via JavaScript based on chosen series -->
-                </tr>
-              </thead>
-              <tbody id="table-body">
-                <!-- Injected via JavaScript based on chosen series -->
-              </tbody>
+        <div class="board-wrap">
+          <p class="table-hint"><i data-lucide="arrow-left-right"></i> Swipe horizontally to view all 10 race events</p>
+          <div class="table-scroll">
+            <table class="board">
+              <caption class="sr-only">Constructor standings for the selected series</caption>
+              <thead><tr id="board-head"></tr></thead>
+              <tbody id="board-body"></tbody>
             </table>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- ==================== SECTION 3: RACE EVENTS & SCHEDULE ==================== -->
-    <section class="racing-events-section" id="events-schedule">
-      <div class="section-container">
-        
-        <!-- Header & Subheading -->
-        <div class="events-header">
-          <div class="events-tag">
-            <span class="pulse-indicator"></span>
-            <span>Worldwide Racing Calendar</span>
-          </div>
-          <h2 class="events-title">CHAMPIONSHIP EVENTS</h2>
-          <p class="events-subtitle">Real-time status, circuit distances, countdown clocks, and telemetry insights</p>
+    <!-- Events -->
+    <section class="section" id="events">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow"><span class="dot dot-pulse"></span> Worldwide Racing Calendar</p>
+          <h2>Championship Events</h2>
+          <p>Real-time status, circuit distances, countdown clocks, and telemetry insights</p>
         </div>
 
-        <!-- Filter Bar & "See More" Toolbar -->
-        <div class="events-toolbar">
-          <div class="events-filter-group" id="events-filter-bar">
-            <button class="events-filter-btn active" data-series="all">
-              <span>ALL SERIES</span>
-            </button>
-            <button class="events-filter-btn" data-series="f1">
-              <span>Formula 1</span>
-            </button>
-            <button class="events-filter-btn" data-series="wec">
-              <span>FIA WEC</span>
-            </button>
-            <button class="events-filter-btn" data-series="gt3">
-              <span>GT World</span>
-            </button>
-            <button class="events-filter-btn" data-series="wrc">
-              <span>WRC Rally</span>
-            </button>
+        <div class="toolbar">
+          <div class="tabs" id="event-filters">
+            <button class="tab is-active" type="button" data-series="all" aria-pressed="true">All Series</button>
+            <button class="tab" type="button" data-series="f1" aria-pressed="false">Formula 1</button>
+            <button class="tab" type="button" data-series="wec" aria-pressed="false">FIA WEC</button>
+            <button class="tab" type="button" data-series="gt3" aria-pressed="false">GT World</button>
+            <button class="tab" type="button" data-series="wrc" aria-pressed="false">WRC Rally</button>
           </div>
-
-          <!-- Counter & Quick See More Action -->
-          <div class="events-toolbar-actions">
-            <span class="events-count-pill" id="events-count-display">Showing 0 Events</span>
-            <button class="btn btn-outline slant-pill btn-sm" id="quick-see-more-btn">
-              <span>See More</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-          </div>
+          <p class="count" id="event-count" aria-live="polite">Showing 0 events</p>
         </div>
 
-        <!-- Dynamic Card Grid -->
-        <div class="events-grid-container" id="events-grid-container">
-          <!-- Cards injected dynamically via script.js -->
-        </div>
+        <div class="event-grid" id="event-grid"></div>
 
-        <!-- Bottom See More Link / Button -->
-        <div class="see-more-wrapper" id="see-more-wrapper">
-          <button class="btn btn-primary slant-pill btn-lg" id="load-more-btn">
+        <div class="load-more" id="load-more-wrap">
+          <button class="btn btn-primary btn-lg" id="load-more" type="button">
             <span>Load More Events</span>
-            <i data-lucide="plus-circle"></i>
+            <i data-lucide="plus"></i>
           </button>
         </div>
-
       </div>
     </section>
 
-    <!-- ==================== SECTION 4: LATEST NEWS ==================== -->
-    <section class="racing-news-section" id="news">
-      <div class="section-container">
-        
-        <!-- Header -->
-        <div class="news-header-center">
-          <span class="sub-badge">Paddock Wire & Dispatches</span>
-          <h2 class="section-title">LATEST NEWS</h2>
-          <div class="title-accent-bar"></div>
+    <!-- News -->
+    <section class="section" id="news">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow"><i data-lucide="radio"></i> Paddock Wire &amp; Dispatches</p>
+          <h2>Latest News</h2>
         </div>
 
-        <!-- Outer Master Slanted Container (Matching CTA Button Geometry) -->
-        <div class="news-master-frame slant-box">
-          <div class="news-frame-inner">
-
-            <!-- LEFT 1/4: Fixed Series Navigation Panel -->
-            <aside class="news-vertical-nav" id="news-series-nav">
-              <div class="nav-rail-header">
-                <i data-lucide="radio" class="text-green"></i>
-                <span>FEED CHANNELS</span>
-              </div>
-
-              <div class="nav-rail-buttons">
-                <button class="news-nav-btn active" data-series="all">
-                  <span class="nav-btn-icon"><i data-lucide="layers"></i></span>
-                  <span class="nav-btn-title">ALL SERIES</span>
-                  <span class="nav-btn-pill" id="badge-count-all">12</span>
-                </button>
-
-                <button class="news-nav-btn" data-series="f1">
-                  <span class="nav-btn-icon"><i data-lucide="flag"></i></span>
-                  <span class="nav-btn-title">Formula 1</span>
-                  <span class="nav-btn-pill" id="badge-count-f1">3</span>
-                </button>
-
-                <button class="news-nav-btn" data-series="wec">
-                  <span class="nav-btn-icon"><i data-lucide="shield"></i></span>
-                  <span class="nav-btn-title">FIA WEC</span>
-                  <span class="nav-btn-pill" id="badge-count-wec">3</span>
-                </button>
-
-                <button class="news-nav-btn" data-series="gt3">
-                  <span class="nav-btn-icon"><i data-lucide="zap"></i></span>
-                  <span class="nav-btn-title">GT World</span>
-                  <span class="nav-btn-pill" id="badge-count-gt3">3</span>
-                </button>
-
-                <button class="news-nav-btn" data-series="wrc">
-                  <span class="nav-btn-icon"><i data-lucide="compass"></i></span>
-                  <span class="nav-btn-title">WRC Rally</span>
-                  <span class="nav-btn-pill" id="badge-count-wrc">3</span>
-                </button>
-              </div>
-
-              <div class="nav-rail-footer">
-                <span class="status-live-beacon"></span>
-                <span class="text-muted" style="font-size:0.7rem;">Live Wire Synced</span>
-              </div>
-            </aside>
-
-            <!-- RIGHT 3/4: Two-Row Scrollable News Grid Display -->
-            <div class="news-cards-panel">
-              <div class="news-scroll-viewport" id="news-scroll-viewport">
-                <div class="news-grid-display" id="news-grid-display">
-                  <!-- News Cards Injected dynamically via script.js -->
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==================== VERTICAL NEWS DETAIL MODAL ==================== -->
-    <div class="news-modal-backdrop" id="news-modal-backdrop">
-      <div class="news-modal-window slant-box" id="news-modal-window">
-        
-        <!-- Modal Top Bar -->
-        <div class="news-modal-header">
-          <div class="modal-header-meta">
-            <span class="series-tag f1" id="modal-series-tag">Formula 1</span>
-            <span class="modal-date-text" id="modal-date-text">Nov 14, 2026</span>
-            <span class="modal-read-pill" id="modal-read-time">3 MIN READ</span>
-          </div>
-          
-          <button class="modal-close-btn" id="modal-close-btn" aria-label="Close News Window">
-            <span>CLOSE</span>
-            <i data-lucide="x"></i>
+        <div class="tabs" id="news-filters">
+          <button class="tab is-active" type="button" data-series="all" aria-pressed="true">
+            <i data-lucide="layers"></i><span>All Series</span><span class="tab-count" data-count="all">0</span>
+          </button>
+          <button class="tab" type="button" data-series="f1" aria-pressed="false">
+            <i data-lucide="flag"></i><span>Formula 1</span><span class="tab-count" data-count="f1">0</span>
+          </button>
+          <button class="tab" type="button" data-series="wec" aria-pressed="false">
+            <i data-lucide="shield"></i><span>FIA WEC</span><span class="tab-count" data-count="wec">0</span>
+          </button>
+          <button class="tab" type="button" data-series="gt3" aria-pressed="false">
+            <i data-lucide="zap"></i><span>GT World</span><span class="tab-count" data-count="gt3">0</span>
+          </button>
+          <button class="tab" type="button" data-series="wrc" aria-pressed="false">
+            <i data-lucide="compass"></i><span>WRC Rally</span><span class="tab-count" data-count="wrc">0</span>
           </button>
         </div>
 
-        <!-- Single Continuous Vertical Article Body -->
-        <div class="news-modal-body" id="modal-article-body">
-          <!-- Injected dynamically via script.js -->
-        </div>
-
+        <div class="news-grid" id="news-grid"></div>
       </div>
-    </div>
+    </section>
 
-    <!-- ==================== SECTION 5: CAR SHOWCASE / GARAGE ==================== -->
-    <section class="cars-showcase-section" id="garage">
-      <div class="section-container">
-        
-        <!-- Header & Subtitle -->
-        <div class="cars-header">
-          <div class="cars-tag">
-            <span class="live-dot"></span>
-            <span>Technical Specifications</span>
-          </div>
-          <h2 class="cars-title">THE MACHINES</h2>
-          <p class="cars-subtitle">Chassis architecture, aerodynamic configurations, and powertrain outputs</p>
+    <!-- Machines -->
+    <section class="section" id="garage">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow"><span class="dot"></span> Technical Specifications</p>
+          <h2>The Machines</h2>
+          <p>Chassis architecture, aerodynamic configurations, and powertrain outputs</p>
         </div>
 
-        <!-- Series Selector (F1 is Default, No "ALL" button) -->
-        <div class="cars-toolbar">
-          <div class="cars-series-nav" id="cars-series-nav">
-            <button class="car-nav-btn active" data-series="f1">
-              <span class="series-logo-frame">
-                <img src="https://media.formula1.com/image/upload/f_auto,c_limit,w_195,q_auto/etc/designs/fom-website/images/f1_default_logo.png" alt="F1" class="series-logo-img" />
-              </span>
+        <div class="garage-bar">
+          <div class="tabs" id="garage-tabs">
+            <button class="tab is-active" type="button" data-series="f1" aria-pressed="true">
+              <span class="logo-chip"><img class="logo-img" src="https://media.formula1.com/image/upload/f_auto,c_limit,w_195,q_auto/etc/designs/fom-website/images/f1_default_logo.png" alt="" data-initials="F1" /></span>
               <span>Formula 1</span>
             </button>
-
-            <button class="car-nav-btn" data-series="wec">
-              <span class="series-logo-frame">
-                <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/WEC_logo.png" alt="WEC" class="series-logo-img" />
-              </span>
+            <button class="tab" type="button" data-series="wec" aria-pressed="false">
+              <span class="logo-chip"><img class="logo-img" src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/WEC_logo.png" alt="" data-initials="WEC" /></span>
               <span>FIA WEC</span>
             </button>
-
-            <button class="car-nav-btn" data-series="gt3">
-              <span class="series-logo-frame">
-                <img src="https://www.gt-world-challenge-europe.com/images/default/logo.png" alt="GT3" class="series-logo-img" />
-              </span>
+            <button class="tab" type="button" data-series="gt3" aria-pressed="false">
+              <span class="logo-chip"><img class="logo-img" src="https://www.gt-world-challenge-europe.com/images/default/logo.png" alt="" data-initials="GT" /></span>
               <span>GT World</span>
             </button>
-
-            <button class="car-nav-btn" data-series="wrc">
-              <span class="series-logo-frame">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/World_Rally_Championship_logo.svg/320px-World_Rally_Championship_logo.svg.png" alt="WRC" class="series-logo-img" />
-              </span>
+            <button class="tab" type="button" data-series="wrc" aria-pressed="false">
+              <span class="logo-chip"><img class="logo-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/World_Rally_Championship_logo.svg/320px-World_Rally_Championship_logo.svg.png" alt="" data-initials="WRC" /></span>
               <span>WRC Rally</span>
             </button>
           </div>
 
-          <!-- Horizontal Scroll Navigation Arrows -->
-          <div class="runway-arrows">
-            <button class="runway-arrow-btn" id="car-scroll-left" aria-label="Scroll cars left">
-              <i data-lucide="chevron-left"></i>
-            </button>
-            <button class="runway-arrow-btn" id="car-scroll-right" aria-label="Scroll cars right">
-              <i data-lucide="chevron-right"></i>
-            </button>
+          <div class="arrows" id="runway-arrows">
+            <button class="arrow-btn" id="runway-prev" type="button" aria-label="Scroll cars left"><i data-lucide="chevron-left"></i></button>
+            <button class="arrow-btn" id="runway-next" type="button" aria-label="Scroll cars right"><i data-lucide="chevron-right"></i></button>
           </div>
         </div>
 
-        <!-- Horizontal Scrollable Runway for Cards -->
-        <div class="cars-runway-wrapper" id="cars-runway">
-          <div class="cars-cards-track" id="cars-cards-track">
-            <!-- Dynamic Tall Portrait Cards Injected via script.js -->
-          </div>
-        </div>
-
+        <div class="runway" id="runway" tabindex="0" aria-label="Car cards, scroll horizontally"></div>
       </div>
     </section>
-    
-    <!-- ==================== SECTION 6: SPONSORS & PARTNERS ==================== -->
-    <section class="partners-section" id="partners">
-      <div class="section-container">
-        <div class="partners-header">
-          <span class="sub-badge">Official Alliances</span>
-          <h2 class="partners-title">TECHNICAL PARTNERS & SPONSORS</h2>
-          <div class="title-accent-bar"></div>
+
+    <!-- Partners -->
+    <section class="section partners" id="partners">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Official Alliances</p>
+          <h2>Technical Partners &amp; Sponsors</h2>
         </div>
       </div>
 
-      <!-- Marquee Wrapper with Edge Fade Gradients -->
-      <div class="marquee-wrapper" id="marquee-wrapper">
+      <!-- script.js duplicates this group so the loop is seamless -->
+      <div class="marquee">
         <div class="marquee-track" id="marquee-track">
-
-          <!-- 10 Partners Track Set 1 -->
           <div class="marquee-group">
-            <div class="marquee-group" aria-hidden="true">
-            <div class="sponsor-item" title="Pirelli Motorsport">
-              <img src="Assets/Partners/Pirelli.png" alt="Pirelli" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Brembo Brakes">
-              <img src="Assets/Partners/Brembo.png" alt="Brembo" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Mobil 1">
-              <img src="Assets/Partners/Mobil1.webp" alt="Mobil 1" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Shell V-Power">
-              <img src="Assets/Partners/Shell.jpg" alt="Shell" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Michelin Motorsport">
-              <img src="Assets/Partners/Michelin.png" alt="Michelin" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Motul Lubricants">
-              <img src="Assets/Partners/Motul.webp" alt="Motul" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="TAG Heuer">
-              <img src="Assets/Partners/TAG heuer.png" alt="TAG Heuer" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Sparco Racing">
-              <img src="Assets/Partners/Sparco.webp" alt="Sparco" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="BBS Motorsport Wheels">
-              <img src="Assets/Partners/BBS.webp" alt="BBS" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Akrapovič Exhausts">
-              <img src="Assets/Partners/Akrapovic.png" alt="Akrapovic" class="sponsor-logo" />
-            </div>
+            <div class="sponsor" title="Pirelli Motorsport"><img src="Assets/Partners/Pirelli.png" alt="Pirelli" /></div>
+            <div class="sponsor" title="Brembo Brakes"><img src="Assets/Partners/Brembo.png" alt="Brembo" /></div>
+            <div class="sponsor" title="Mobil 1"><img src="Assets/Partners/Mobil1.webp" alt="Mobil 1" /></div>
+            <div class="sponsor" title="Shell V-Power"><img src="Assets/Partners/Shell.jpg" alt="Shell" /></div>
+            <div class="sponsor" title="Michelin Motorsport"><img src="Assets/Partners/Michelin.png" alt="Michelin" /></div>
+            <div class="sponsor" title="Motul Lubricants"><img src="Assets/Partners/Motul.webp" alt="Motul" /></div>
+            <div class="sponsor" title="TAG Heuer"><img src="Assets/Partners/TAG heuer.png" alt="TAG Heuer" /></div>
+            <div class="sponsor" title="Sparco Racing"><img src="Assets/Partners/Sparco.webp" alt="Sparco" /></div>
+            <div class="sponsor" title="BBS Motorsport Wheels"><img src="Assets/Partners/BBS.webp" alt="BBS" /></div>
+            <div class="sponsor" title="Akrapovič Exhausts"><img src="Assets/Partners/Akrapovic.png" alt="Akrapovic" /></div>
           </div>
-
-          <!-- Identical Duplicate Set 2 for Seamless Loop -->
-          <div class="marquee-group" aria-hidden="true">
-            <div class="sponsor-item" title="Pirelli Motorsport">
-              <img src="Assets/Partners/Pirelli.png" alt="Pirelli" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Brembo Brakes">
-              <img src="Assets/Partners/Brembo.png" alt="Brembo" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Mobil 1">
-              <img src="Assets/Partners/Mobil1.webp" alt="Mobil 1" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Shell V-Power">
-              <img src="Assets/Partners/Shell.jpg" alt="Shell" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Michelin Motorsport">
-              <img src="Assets/Partners/Michelin.png" alt="Michelin" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Motul Lubricants">
-              <img src="Assets/Partners/Motul.webp" alt="Motul" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="TAG Heuer">
-              <img src="Assets/Partners/TAG heuer.png" alt="TAG Heuer" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Sparco Racing">
-              <img src="Assets/Partners/Sparco.webp" alt="Sparco" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="BBS Motorsport Wheels">
-              <img src="Assets/Partners/BBS.webp" alt="BBS" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Akrapovič Exhausts">
-              <img src="Assets/Partners/Akrapovic.png" alt="Akrapovic" class="sponsor-logo" />
-            </div>
-          </div>
-
-          <div class="marquee-group" aria-hidden="true">
-            <div class="sponsor-item" title="Pirelli Motorsport">
-              <img src="Assets/Partners/Pirelli.png" alt="Pirelli" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Brembo Brakes">
-              <img src="Assets/Partners/Brembo.png" alt="Brembo" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Mobil 1">
-              <img src="Assets/Partners/Mobil1.webp" alt="Mobil 1" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Shell V-Power">
-              <img src="Assets/Partners/Shell.jpg" alt="Shell" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Michelin Motorsport">
-              <img src="Assets/Partners/Michelin.png" alt="Michelin" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Motul Lubricants">
-              <img src="Assets/Partners/Motul.webp" alt="Motul" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="TAG Heuer">
-              <img src="Assets/Partners/TAG heuer.png" alt="TAG Heuer" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Sparco Racing">
-              <img src="Assets/Partners/Sparco.webp" alt="Sparco" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="BBS Motorsport Wheels">
-              <img src="Assets/Partners/BBS.webp" alt="BBS" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Akrapovič Exhausts">
-              <img src="Assets/Partners/Akrapovic.png" alt="Akrapovic" class="sponsor-logo" />
-            </div>
-          </div>
-
-          <div class="marquee-group" aria-hidden="true">
-            <div class="sponsor-item" title="Pirelli Motorsport">
-              <img src="Assets/Partners/Pirelli.png" alt="Pirelli" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Brembo Brakes">
-              <img src="Assets/Partners/Brembo.png" alt="Brembo" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Mobil 1">
-              <img src="Assets/Partners/Mobil1.webp" alt="Mobil 1" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Shell V-Power">
-              <img src="Assets/Partners/Shell.jpg" alt="Shell" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Michelin Motorsport">
-              <img src="Assets/Partners/Michelin.png" alt="Michelin" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Motul Lubricants">
-              <img src="Assets/Partners/Motul.webp" alt="Motul" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="TAG Heuer">
-              <img src="Assets/Partners/TAG heuer.png" alt="TAG Heuer" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Sparco Racing">
-              <img src="Assets/Partners/Sparco.webp" alt="Sparco" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="BBS Motorsport Wheels">
-              <img src="Assets/Partners/BBS.webp" alt="BBS" class="sponsor-logo" />
-            </div>
-            <div class="sponsor-item" title="Akrapovič Exhausts">
-              <img src="Assets/Partners/Akrapovic.png" alt="Akrapovic" class="sponsor-logo" />
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
-
-    <!-- ==================== SECTION 7: FOOTER ==================== -->
-    <footer class="racing-footer" id="footer">
-      <div class="section-container">
-        
-        <!-- Top Newsletter / Notification Bar -->
-        <div class="footer-newsletter-box slant-box">
-          <div class="newsletter-content">
-            <span class="newsletter-tag"><i data-lucide="bell" class="mini-icon"></i> RACE NOTIFICATIONS</span>
-            <h3 class="newsletter-title">NEVER MISS A GREEN FLAG</h3>
-            <p class="newsletter-desc">Subscribe to receive instant pit alerts, qualifying delta reports, and schedule updates directly to your inbox.</p>
-          </div>
-          <form class="newsletter-form" id="newsletter-form">
-            <input type="email" id="newsletter-email" placeholder="Enter your email address..." required class="newsletter-input" />
-            <button type="submit" class="btn btn-primary slant-pill">
-              <span>Subscribe</span>
-              <i data-lucide="send"></i>
-            </button>
-          </form>
-        </div>
-
-        <!-- Main Footer Navigation Columns -->
-        <div class="footer-grid">
-          
-          <!-- Column 1: Brand Info & Bio -->
-          <div class="footer-col brand-col">
-            <a href="#" class="brand-logo footer-logo">
-              <div class="logo-box">
-                <i data-lucide="gauge"></i>
-              </div>
-              <div class="logo-text">
-                <span class="logo-title">RACI<span class="text-green">FY</span></span>
-                <span class="logo-sub">Motorsport Hub</span>
-              </div>
-            </a>
-            <p class="footer-bio">
-              The premier digital destination for real-time circuit telemetry, synchronized motorsport championship schedules, constructor standings, and paddock engineering intelligence.
-            </p>
-            <div class="footer-social-icons">
-              <a href="#" class="social-btn" aria-label="Racify on X"><i data-lucide="twitter"></i></a>
-              <a href="#" class="social-btn" aria-label="Racify on YouTube"><i data-lucide="youtube"></i></a>
-              <a href="#" class="social-btn" aria-label="Racify on Instagram"><i data-lucide="instagram"></i></a>
-              <a href="#" class="social-btn" aria-label="Racify on GitHub"><i data-lucide="github"></i></a>
-            </div>
-          </div>
-
-          <!-- Column 2: Series Hub -->
-          <div class="footer-col">
-            <h4 class="footer-col-title">CHAMPIONSHIPS</h4>
-            <ul class="footer-links">
-              <li><a href="#leaderboard">Formula 1 Championship</a></li>
-              <li><a href="#leaderboard">FIA World Endurance (WEC)</a></li>
-              <li><a href="#leaderboard">GT World Challenge Europe</a></li>
-              <li><a href="#leaderboard">World Rally Championship (WRC)</a></li>
-              <li><a href="#garage">Technical Specifications</a></li>
-            </ul>
-          </div>
-
-          <!-- Column 3: Platform & Features -->
-          <div class="footer-col">
-            <h4 class="footer-col-title">PLATFORM</h4>
-            <ul class="footer-links">
-              <li><a href="#events-schedule">Live Race Center</a></li>
-              <li><a href="#news">Paddock Wire & Dispatches</a></li>
-              <li><a href="#garage">The Machines Showcase</a></li>
-              <li><a href="#partners">Partners & Alliances</a></li>
-              <li><a href="#telemetry">API & Telemetry Feeds</a></li>
-            </ul>
-          </div>
-
-          <!-- Column 4: Developer & Direct Contacts -->
-          <div class="footer-col contact-col">
-            <h4 class="footer-col-title">DEVELOPER & CONTACT</h4>
-            <div class="contact-card">
-              <div class="contact-item">
-                <i data-lucide="mail" class="contact-icon text-green"></i>
-                <div class="contact-meta">
-                  <span class="contact-label">Official Email</span>
-                  <a href="mailto:bleemmjochi@gmail.com" class="contact-link">bleemmjochi@gmail.com</a>
-                </div>
-              </div>
-
-              <div class="contact-item">
-                <i data-lucide="message-circle" class="contact-icon text-green"></i>
-                <div class="contact-meta">
-                  <span class="contact-label">WhatsApp Direct</span>
-                  <a href="https://wa.me/2349042020318" target="_blank" rel="noopener noreferrer" class="contact-link">+234 904 202 0318</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Back to Top Button -->
-            <button class="back-to-top-btn" id="back-to-top-btn" aria-label="Back to top of page">
-              <span>BACK TO TOP</span>
-              <i data-lucide="arrow-up"></i>
-            </button>
-          </div>
-
-        </div>
-
-        <!-- Bottom Legal & Developer Copyright Bar -->
-        <div class="footer-bottom-bar">
-          <p class="copyright-text">
-            &copy; 2026 Racify Inc. All rights reserved.
-          </p>
-          
-          <div class="developer-credit-badge">
-            <span class="pulse-indicator"></span>
-            <span>Developed by <strong class="developer-name">BlexonDev (Blessed John)</strong></span>
-          </div>
-
-          <div class="footer-legal-links">
-            <a href="#">Privacy Policy</a>
-            <span>•</span>
-            <a href="#">Terms of Service</a>
-            <span>•</span>
-            <a href="#">Telemetry License</a>
-          </div>
-        </div>
-
-      </div>
-    </footer>
-    <!-- ========================================================
-         FUTURE SECTIONS CAN BE PASTED BELOW HERE:
-         - SECTION 2: Event Dashboard (Filters, Track Layouts)
-         - SECTION 3: World Series Hub (3D Globe / Map)
-         - SECTION 4: Latest News & Community Forum Grid
-         - SECTION 5: Sponsors & Footer
-         ======================================================== -->
 
   </main>
 
-  <!-- CONNECTING JAVASCRIPT -->
-  <script src="script.js"></script>
+  <!-- News popup -->
+  <div class="modal" id="news-modal" aria-hidden="true">
+    <div class="modal-window" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <header class="modal-bar">
+        <div class="modal-meta">
+          <span class="tag" id="modal-series">Formula 1</span>
+          <time id="modal-date">Nov 14, 2026</time>
+          <span class="read-pill" id="modal-read">3 min read</span>
+        </div>
+        <button class="modal-close" id="modal-close" type="button" aria-label="Close news window">
+          <span>Close</span>
+          <i data-lucide="x"></i>
+        </button>
+      </header>
+      <div class="modal-body" id="modal-body" tabindex="0"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer" id="footer">
+    <div class="wrap">
+
+      <div class="signup">
+        <div class="signup-copy">
+          <p class="eyebrow"><i data-lucide="bell"></i> Race notifications</p>
+          <h3>Never miss a green flag</h3>
+          <p>Subscribe to receive instant pit alerts, qualifying delta reports, and schedule updates directly to your inbox.</p>
+        </div>
+        <form class="signup-form" id="signup-form">
+          <label class="sr-only" for="signup-email">Email address</label>
+          <input type="email" id="signup-email" name="email" placeholder="Enter your email address" autocomplete="email" required />
+          <button type="submit" class="btn btn-primary">
+            <span>Subscribe</span>
+            <i data-lucide="send"></i>
+          </button>
+          <p class="signup-status" id="signup-status" role="status" hidden></p>
+        </form>
+      </div>
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="#top" class="brand" aria-label="Racify home">
+            <span class="brand-mark"><i data-lucide="gauge"></i></span>
+            <span>
+              <span class="brand-name">RACI<span>FY</span></span>
+              <span class="brand-sub">Motorsport Hub</span>
+            </span>
+          </a>
+          <p class="footer-bio">
+            The premier digital destination for real-time circuit telemetry, synchronized motorsport championship schedules, constructor standings, and paddock engineering intelligence.
+          </p>
+          <div class="socials">
+            <a href="#" aria-label="Racify on X">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" aria-label="Racify on YouTube">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+            </a>
+            <a href="#" aria-label="Racify on Instagram">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+            <a href="#" aria-label="Racify on GitHub">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <nav class="footer-col" aria-label="Championships">
+          <h4>Championships</h4>
+          <ul>
+            <li><a href="#leaderboard">Formula 1 Championship</a></li>
+            <li><a href="#leaderboard">FIA World Endurance (WEC)</a></li>
+            <li><a href="#leaderboard">GT World Challenge Europe</a></li>
+            <li><a href="#leaderboard">World Rally Championship (WRC)</a></li>
+            <li><a href="#garage">Technical Specifications</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Platform">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="#events">Live Race Center</a></li>
+            <li><a href="#news">Paddock Wire &amp; Dispatches</a></li>
+            <li><a href="#garage">The Machines Showcase</a></li>
+            <li><a href="#partners">Partners &amp; Alliances</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-col">
+          <h4>Developer &amp; Contact</h4>
+          <ul class="contact">
+            <li>
+              <i data-lucide="mail"></i>
+              <div>
+                <span class="contact-label">Official Email</span>
+                <a href="mailto:bleemmjochi@gmail.com">bleemmjochi@gmail.com</a>
+              </div>
+            </li>
+            <li>
+              <i data-lucide="message-circle"></i>
+              <div>
+                <span class="contact-label">WhatsApp Direct</span>
+                <a href="https://wa.me/2349042020318" target="_blank" rel="noopener noreferrer">+234 904 202 0318</a>
+              </div>
+            </li>
+          </ul>
+          <button class="to-top" id="to-top" type="button">
+            <span>Back to top</span>
+            <i data-lucide="arrow-up"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <div class="footer-bar">
+        <p>&copy; 2026 Racify Inc. All rights reserved.</p>
+        <p class="credit"><span class="dot dot-pulse"></span> Developed by <strong>BlexonDev (Blessed John)</strong></p>
+        <p class="legal">
+          <a href="#">Privacy Policy</a>
+          <span aria-hidden="true">•</span>
+          <a href="#">Terms of Service</a>
+          <span aria-hidden="true">•</span>
+          <a href="#">Telemetry License</a>
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
 </body>
 </html>
