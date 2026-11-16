@@ -1834,3 +1834,81 @@ function renderCarsRunway(seriesKey) {
     lucide.createIcons();
   }
 }
+
+/* ==========================================================
+   7. PARTNERS MARQUEE INTERACTIVE DRAG & SCROLL
+   ========================================================== */
+function initPartnersMarquee() {
+  const wrapper = document.getElementById('marquee-wrapper');
+  if (!wrapper) return;
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  // When user clicks or drags on the marquee, pause auto-scroll and allow manual scroll
+  wrapper.addEventListener('mousedown', (e) => {
+    isDown = true;
+    wrapper.classList.add('manual-control');
+    startX = e.pageX - wrapper.offsetLeft;
+    scrollLeft = wrapper.scrollLeft;
+  });
+
+  wrapper.addEventListener('mouseleave', () => {
+    isDown = false;
+  });
+
+  wrapper.addEventListener('mouseup', () => {
+    isDown = false;
+  });
+
+  wrapper.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - wrapper.offsetLeft;
+    const walk = (x - startX) * 2; // Drag multiplier
+    wrapper.scrollLeft = scrollLeft - walk;
+  });
+
+  // Mouse wheel horizontal scroll support
+  wrapper.addEventListener('wheel', (e) => {
+    if (e.deltaY !== 0) {
+      e.preventDefault();
+      wrapper.classList.add('manual-control');
+      wrapper.scrollLeft += e.deltaY;
+    }
+  }, { passive: false });
+}
+
+/* ==========================================================
+   8. FOOTER ACTIONS: NEWSLETTER & BACK TO TOP
+   ========================================================== */
+function initFooterActions() {
+  // Back to Top button
+  const backToTopBtn = document.getElementById('back-to-top-btn');
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  // Newsletter registration
+  const newsletterForm = document.getElementById('newsletter-form');
+  const emailInput = document.getElementById('newsletter-email');
+
+  if (newsletterForm && emailInput) {
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+
+      if (email) {
+        // Confirmation alert
+        alert(`🏁 Paddock Notification Confirmed! Alerts will be dispatched to: ${email}`);
+        emailInput.value = '';
+      }
+    });
+  }
+}
